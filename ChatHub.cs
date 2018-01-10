@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.SignalR;
 namespace SimpleChat
 {
     public class ChatHub : Hub
-    {      
-        public async Task Send(string message)
+    {
+        public void SendToAll(string name, string message)
         {
-            await Clients.All.InvokeAsync("Send", message);
+            Clients.All.InvokeAsync("sendToAll", name, message);
         }
     }
 }
